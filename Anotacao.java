@@ -9,7 +9,6 @@ public class Anotacao {
     private boolean deletada = false;
     private LocalDate dataDeCriacao;
 
-
     public Anotacao(String texto, int id) {
         this.texto = texto;
         this.id = id;
@@ -28,34 +27,33 @@ public class Anotacao {
         deletada = true;
     }
 
-    public boolean contemTexto(String texto){
-        if(this.texto.contains(texto)){
-            return true;
-        } else {
-            return false;
-        }
-
+    public boolean contemTexto(String texto) throws Exception {
+        checarTexto(texto);
+        return this.texto.contains(texto);
     }
 
     public int getId() {
         return id;
     }
 
-
     public String getTexto() {
         return texto;
     }
 
-
-    public void setTexto(String texto) {
-        this.texto = texto;
+    public void checarTexto(String texto) throws Exception{
+        if(texto == null || texto.trim().isEmpty()){
+            throw new Exception("O texto não pode estar nulo ou vazio!");
+        }
     }
 
+    public void setTexto(String texto) throws Exception{
+        checarTexto(texto);
+        this.texto = texto;
+    }
 
     public LocalDate getDataDeCriacao() {
         return dataDeCriacao;
     }
-
 
     @Override
     public String
@@ -66,7 +64,6 @@ public class Anotacao {
                 ", dataDeCriacao=" + dataDeCriacao +
                 '}';
     }
-
 
     @Override
     public boolean equals(Object o) {
@@ -82,6 +79,7 @@ public class Anotacao {
         return Objects.hash(texto, id, dataDeCriacao);
     }
 }
+
 
 
 
