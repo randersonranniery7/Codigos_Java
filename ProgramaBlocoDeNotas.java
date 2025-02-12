@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class TestandoBlocoDeNotas {
+public class ProgramaBlocoDeNotas {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         BlocoDeAnotacoes bloco = new BlocoDeAnotacoes();
