@@ -1,4 +1,5 @@
 
+
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -9,13 +10,14 @@ public class Anotacao {
     private boolean deletada = false;
     private LocalDate dataDeCriacao;
 
-    public Anotacao(String texto, int id) {
+    public Anotacao(String texto, int id) throws Exception{
+        checarTexto(texto);
         this.texto = texto;
         this.id = id;
         dataDeCriacao = LocalDate.now();
     }
 
-    public Anotacao(){
+    public Anotacao() throws Exception{
         this("",0);
     }
 
@@ -79,7 +81,5 @@ public class Anotacao {
         return Objects.hash(texto, id, dataDeCriacao);
     }
 }
-
-
 
 

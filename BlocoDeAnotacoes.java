@@ -1,3 +1,5 @@
+
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -8,7 +10,12 @@ public class BlocoDeAnotacoes {
 
     public Anotacao adicionarAnotacao(String texto){
         int id = anotacoes.size() + 1 ;
-        Anotacao novaAnotacao = new Anotacao(texto, id);
+        Anotacao novaAnotacao = null;
+        try {
+            novaAnotacao = new Anotacao(texto, id);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         anotacoes.add(novaAnotacao);
         return novaAnotacao;
     }
@@ -40,8 +47,6 @@ public class BlocoDeAnotacoes {
                 if (anotacao.contemTexto(texto) && !anotacao.isDeletada()){
                     anotacaoEncontada.add(anotacao);
                 }
-            } else{
-                throw new RuntimeException("A lista está vazia");
             }
         }
         return anotacaoEncontada;
@@ -87,10 +92,6 @@ public class BlocoDeAnotacoes {
         return Objects.hashCode(anotacoes);
     }
 }
-
-
-
-
 
 
 
