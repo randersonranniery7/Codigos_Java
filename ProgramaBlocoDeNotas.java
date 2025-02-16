@@ -28,7 +28,7 @@ public class ProgramaBlocoDeNotas {
                         System.out.println(notaEncontradaPorId);
 
                     } catch (Exception exception) {
-                        System.err.println("Ocorreu um erro no programa por:\n" + exception.getMessage());
+                        System.err.println("Ocorreu um erro no program por:\n" + exception.getMessage());
                     }
                 }
                 case "3" -> {
@@ -89,6 +89,3 @@ public class ProgramaBlocoDeNotas {
         sc.close();
     }
 }
-
-
-
