@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.Scanner;
 
 public class ProgramaBlocoDeNotas {
@@ -23,7 +24,8 @@ public class ProgramaBlocoDeNotas {
                 case "2" -> {
                     try {
                         System.out.println("Informe o ID: ");
-                        bloco.buscaNotaPorId(Integer.parseInt(sc.nextLine()));
+                        Anotacao notaEncontradaPorId = bloco.buscaNotaPorId(Integer.parseInt(sc.nextLine()));
+                        System.out.println(notaEncontradaPorId);
 
                     } catch (Exception exception) {
                         System.err.println("Ocorreu um erro no programa por:\n" + exception.getMessage());
@@ -45,7 +47,8 @@ public class ProgramaBlocoDeNotas {
                     try {
                         System.out.println("Digite uma palavra ou frase para encontrar anotações correspondentes: ");
                         String encontrarAnotacao = sc.nextLine();
-                        bloco.recuperarPorTexto(encontrarAnotacao);
+                        List<Anotacao> notaEncontradaPorTexto = bloco.recuperarPorTexto(encontrarAnotacao);
+                        System.out.println(notaEncontradaPorTexto);
                     } catch (Exception exception) {
 
                         System.err.println("Ocorreu um erro no programa por:\n" + exception.getMessage());
@@ -53,9 +56,11 @@ public class ProgramaBlocoDeNotas {
                 }
                 case "5" -> {
 
-
                     try {
-                        bloco.listarAnotacoes();
+                        List<Anotacao> anotacoes = bloco.listarAnotacoes();
+                        for(Anotacao nota : anotacoes){
+                            System.out.println(nota);
+                        }
 
                     } catch (Exception exception) {
                         System.err.println("Ocorreu um erro no programa por:\n" + exception.getMessage());
@@ -68,6 +73,7 @@ public class ProgramaBlocoDeNotas {
                         System.out.println("Informe o ID da anotação que deseja deletar: ");
                         int idDeletar = Integer.parseInt(sc.nextLine());
                         bloco.deletarAnotacao(idDeletar);
+                        System.out.println("Anotação deletada com sucesso!");
 
                     } catch (Exception exception) {
                         System.err.println("Ocorreu um erro no programa por:\n" + exception.getMessage());
